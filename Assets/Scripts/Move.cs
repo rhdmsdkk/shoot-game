@@ -6,10 +6,10 @@ public class Move : MonoBehaviour
 {
     public float speed;
     public float jumpPower;
+    public bool isFacingRight;
 
     private int _jumpCounter = 0;
     private float _horizontal;
-    private bool _isFacingRight = true;
 
     private Rigidbody2D _rb;
 
@@ -38,10 +38,10 @@ public class Move : MonoBehaviour
 
     private void Flip()
     {
-        if (_isFacingRight && _horizontal < 0f || !_isFacingRight && _horizontal > 0f)
+        if (isFacingRight && _horizontal < 0f || !isFacingRight && _horizontal > 0f)
         {
-            _isFacingRight = !_isFacingRight;
-            GetComponent<SpriteRenderer>().flipX = _isFacingRight;
+            isFacingRight = !isFacingRight;
+            GetComponent<SpriteRenderer>().flipX = isFacingRight;
         }
     }
 
