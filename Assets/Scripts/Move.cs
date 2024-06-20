@@ -7,6 +7,7 @@ public class Move : MonoBehaviour
     public float speed;
     public float jumpPower;
     public bool isFacingRight;
+    public GameObject gun;
 
     private int _jumpCounter = 0;
     private float _horizontal;
@@ -41,7 +42,7 @@ public class Move : MonoBehaviour
         if (isFacingRight && _horizontal < 0f || !isFacingRight && _horizontal > 0f)
         {
             isFacingRight = !isFacingRight;
-            GetComponent<SpriteRenderer>().flipX = isFacingRight;
+            transform.Rotate(new Vector3(0, 180, 0));
         }
     }
 
