@@ -7,7 +7,6 @@ public class Move : MonoBehaviour
     public float speed;
     public float jumpPower;
     public bool isFacingRight;
-    public GameObject gun;
 
     private int _jumpCounter = 0;
     private float _horizontal;

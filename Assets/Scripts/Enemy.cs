@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     public int health = 100;
     public GameObject deathEffect;
+    public Weapon gun;
 
     public void takeDamage(int damage)
     {

@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
             enemy.takeDamage(20);
         }
 
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Ground"))
         {
             Instantiate(hitEffect, transform.position, transform.rotation);
             Destroy(gameObject);
