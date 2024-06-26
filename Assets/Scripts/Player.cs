@@ -29,6 +29,15 @@ public class Player : MonoBehaviour
     public void Die()
     {
         Instantiate(deathEffect, transform.position, transform.rotation);
-        Destroy(gameObject);
+
+        GetComponent<Player>().enabled = false;
+        GetComponent<Move>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>())
+        {
+            renderer.enabled = false;
+        }
     }
 }
