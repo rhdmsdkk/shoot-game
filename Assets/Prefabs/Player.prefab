@@ -176,6 +176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 460105177077350394}
+  health: 100
+  deathEffect: {fileID: 0}
 --- !u!114 &1455085480551265988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +369,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 5623973356456180646}
   bullet: {fileID: 1404190746075573424, guid: 46be3a9bc614cc047a74fdf2651e06ab, type: 3}
+  fireRate: 0.5
+  damage: 0
 --- !u!1 &3742603407228906009
 GameObject:
   m_ObjectHideFlags: 0

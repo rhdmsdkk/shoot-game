@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Weapon gun;
-    public int health = 200;
+    public int health = 100;
     public GameObject deathEffect;
 
     void Update()
