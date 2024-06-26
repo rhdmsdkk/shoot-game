@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Weapon gun;
+    public int health = 200;
+    public GameObject deathEffect;
 
     void Update()
     {
@@ -12,5 +14,21 @@ public class Player : MonoBehaviour
         {
             gun.Shoot();
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Instantiate(deathEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

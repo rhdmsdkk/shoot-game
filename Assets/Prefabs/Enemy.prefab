@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7285057610216845682}
   bullet: {fileID: 1404190746075573424, guid: 46be3a9bc614cc047a74fdf2651e06ab, type: 3}
+  fireRate: 0.5
 --- !u!1 &2315351260797881032
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,8 +220,8 @@ GameObject:
   - component: {fileID: 6962183223615383261}
   - component: {fileID: 3908527172563974115}
   - component: {fileID: 5084047186513383032}
-  - component: {fileID: 1483519359606371745}
   - component: {fileID: 2796682465303403303}
+  - component: {fileID: 2499480227981385859}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -370,21 +371,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &1483519359606371745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7980426406779127752}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e6ed05e07d511f46bdeb0bbd37e26ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  jumpPower: 0
-  isFacingRight: 0
 --- !u!114 &2796682465303403303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,3 +386,16 @@ MonoBehaviour:
   health: 100
   deathEffect: {fileID: 8028987879699745122, guid: 84e356d69d92c064ebb171a53726fcfb, type: 3}
   gun: {fileID: 512381169038151518}
+  speed: 6
+--- !u!114 &2499480227981385859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7980426406779127752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ec79f4c48f9c948a1849d3a1b9873b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,7 +8,22 @@ public class Enemy : MonoBehaviour
     public GameObject deathEffect;
     public Weapon gun;
 
-    public void takeDamage(int damage)
+    private GameObject _player;
+
+    void Start()
+    {
+        _player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void Update()
+    {
+        if (transform.position.y <= _player.transform.position.y + 2 && transform.position.y >= _player.transform.position.y - 2)
+        {
+            gun.Shoot();
+        }
+    }
+
+    public void TakeDamage(int damage)
     {
         health -= damage;
 
