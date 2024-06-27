@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public int health = 100;
     public GameObject deathEffect;
     public Weapon gun;
+    public bool isFacingRight;
 
     private GameObject _player;
 
@@ -21,6 +22,8 @@ public class Enemy : MonoBehaviour
         {
             gun.Shoot();
         }
+
+        Flip();
     }
 
     public void TakeDamage(int damage)
@@ -37,5 +40,14 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(deathEffect, transform.position, transform.rotation);
         Destroy(gameObject);
+    }
+
+    private void Flip()
+    {
+        if ((transform.position.x < _player.transform.position.x && !isFacingRight) || (transform.position.x > _player.transform.position.x && isFacingRight))
+        {
+            isFacingRight = !isFacingRight;
+            transform.Rotate(new Vector3(0, 180, 0));
+        }
     }
 }

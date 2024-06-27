@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7285057610216845682}
-  bullet: {fileID: 1404190746075573424, guid: 46be3a9bc614cc047a74fdf2651e06ab, type: 3}
+  bullet: {fileID: 5597306130314860207, guid: a7e4f5f0dbc80ba4e954e668a8d19693, type: 3}
   fireRate: 0.5
   damage: 0
 --- !u!1 &2315351260797881032
@@ -387,6 +387,7 @@ MonoBehaviour:
   health: 100
   deathEffect: {fileID: 8028987879699745122, guid: 84e356d69d92c064ebb171a53726fcfb, type: 3}
   gun: {fileID: 512381169038151518}
+  isFacingRight: 0
 --- !u!114 &2499480227981385859
 MonoBehaviour:
   m_ObjectHideFlags: 0

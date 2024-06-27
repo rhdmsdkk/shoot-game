@@ -5,9 +5,9 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
-    public int damage;
     public Rigidbody2D rb;
     public GameObject hitEffect;
+    public int damage;
 
     void Start()
     {
@@ -18,33 +18,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*
-        Enemy enemy = collision.GetComponent<Enemy>();
-        Player player = collision.GetComponent<Player>();
-        if (enemy)
-        {
-            enemy.TakeDamage(damage);
-        }
-        else if (player)
-        {
-            player.TakeDamage(damage);
-        }
-
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Enemy"))
-        {
-            Instantiate(hitEffect, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
-        */
-
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("hit enemy for " + damage);
             collision.GetComponent<Enemy>().TakeDamage(damage);
             Instantiate(hitEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("hit player" + damage);
             collision.GetComponent<Player>().TakeDamage(damage);
             Instantiate(hitEffect, transform.position, transform.rotation);
             Destroy(gameObject);
