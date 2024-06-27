@@ -7,14 +7,15 @@ TagManager:
   - Ground
   - Platform
   - Enemy
+  - GroundCheck
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Platforms
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
