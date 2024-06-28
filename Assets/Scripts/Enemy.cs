@@ -11,13 +11,11 @@ public class Enemy : MonoBehaviour
     public bool isFacingRight;
 
     private Rigidbody2D _rb;
-    private GameObject _player;
     private bool _playerDetected;
+    private float _lastFlipTime = 0f;
 
     private void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
-
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -26,13 +24,19 @@ public class Enemy : MonoBehaviour
         if (_playerDetected)
         {
             gun.Shoot();
+        } else
+        {
+            Patrol();
         }
-
-        Flip();
     }
 
     public void TakeDamage(int damage)
     {
+        if (!_playerDetected)
+        {
+            Flip();
+        }
+
         health -= damage;
 
         if (health <= 0)
@@ -49,16 +53,21 @@ public class Enemy : MonoBehaviour
 
     private void Flip()
     {
-        if ((transform.position.x < _player.transform.position.x && !isFacingRight) || (transform.position.x > _player.transform.position.x && isFacingRight))
-        {
-            isFacingRight = !isFacingRight;
-            transform.Rotate(new Vector3(0, 180, 0));
-        }
+        isFacingRight = !isFacingRight;
+        transform.Rotate(new Vector3(0, 180, 0));
     }
 
     void Patrol()
     {
-        Vector2 direction = (_player.transform.position - transform.position).normalized;
+        Vector2 direction = isFacingRight ? (new(1, 0)) : new(-1, 0);
+        if ((transform.position.x <= -6.5 || transform.position.x >= 6.5) && (Time.time - _lastFlipTime > 1.5f))
+        {
+
+            _lastFlipTime = Time.time;
+            Flip();
+            direction *= -1;
+
+        }
         _rb.velocity = direction * speed;
     }
 
