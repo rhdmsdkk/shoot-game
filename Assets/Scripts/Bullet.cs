@@ -20,14 +20,12 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("hit enemy for " + damage);
             collision.GetComponent<Enemy>().TakeDamage(damage);
             Instantiate(hitEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("hit player" + damage);
             collision.GetComponent<Player>().TakeDamage(damage);
             Instantiate(hitEffect, transform.position, transform.rotation);
             Destroy(gameObject);
