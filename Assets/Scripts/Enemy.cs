@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int health = 100;
+    public int maxHealth = 100;
     public int speed;
     public GameObject deathEffect;
     public Weapon gun;
     public bool isFacingRight;
+    public HealthBar healthBar;
 
     private Rigidbody2D _rb;
     private bool _playerDetected;
     private float _lastFlipTime = 0f;
+    private int _health;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+
+        _health = maxHealth;
+        healthBar.SetHealth(_health);
     }
 
     private void Update()
@@ -37,9 +42,11 @@ public class Enemy : MonoBehaviour
             Flip();
         }
 
-        health -= damage;
+        _health -= damage;
 
-        if (health <= 0)
+        healthBar.SetHealth(_health);
+
+        if (_health <= 0)
         {
             Die();
         }

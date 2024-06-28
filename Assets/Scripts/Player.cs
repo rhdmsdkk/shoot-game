@@ -5,8 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public Weapon gun;
-    public int health = 100;
+    public int maxHealth = 100;
     public GameObject deathEffect;
+    public HealthBar healthBar;
+
+    private int _health;
+
+    private void Start()
+    {
+        _health = maxHealth;
+        healthBar.SetHealth(_health);
+    }
 
     void Update()
     {
@@ -18,9 +27,11 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        _health -= damage;
 
-        if (health <= 0)
+        healthBar.SetHealth(_health);
+
+        if (_health <= 0)
         {
             Die();
         }
