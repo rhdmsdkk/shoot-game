@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    
+    [SerializeField] private GameObject _restartButton;
 
     private void Awake()
     {
@@ -16,8 +18,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void GameOver()
+    public IEnumerator GameOver()
     {
+        yield return new WaitForSeconds(0.35f);
+        _restartButton.SetActive(true);
         Time.timeScale = 0f;
     }
 }

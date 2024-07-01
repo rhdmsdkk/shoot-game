@@ -50,5 +50,7 @@ public class Player : MonoBehaviour
         {
             renderer.enabled = false;
         }
+
+        StartCoroutine(GameManager.instance.GameOver());
     }
 }

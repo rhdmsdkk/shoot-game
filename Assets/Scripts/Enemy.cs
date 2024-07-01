@@ -55,7 +55,17 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         Instantiate(deathEffect, transform.position, transform.rotation);
-        Destroy(gameObject);
+
+        GetComponent<Enemy>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>())
+        {
+            renderer.enabled = false;
+        }
+
+        StartCoroutine(GameManager.instance.GameOver());
     }
 
     private void Flip()
