@@ -29,7 +29,8 @@ public class Enemy : MonoBehaviour
         if (_playerDetected)
         {
             gun.Shoot();
-        } else
+        } 
+        else
         {
             Patrol();
         }
@@ -59,13 +60,14 @@ public class Enemy : MonoBehaviour
         GetComponent<Enemy>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
+        GetComponentInChildren<Canvas>().enabled = false;
 
         foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>())
         {
             renderer.enabled = false;
         }
 
-        StartCoroutine(GameManager.instance.GameOver());
+        GameManager.instance.enemyCount--;
     }
 
     private void Flip()
@@ -77,7 +79,26 @@ public class Enemy : MonoBehaviour
     void Patrol()
     {
         Vector2 direction = isFacingRight ? (new(1, 0)) : new(-1, 0);
-        if ((transform.position.x <= -6.5 || transform.position.x >= 6.5) && (Time.time - _lastFlipTime > 1.5f))
+        float lowerX;
+        float upperX;
+
+        if (transform.position.y > 1.6)
+        {
+            lowerX = -5f;
+            upperX = -1.7f;
+        } 
+        else if (transform.position.y > -1)
+        {
+            lowerX = 3.3f;
+            upperX = 6f;
+        }
+        else
+        {
+            lowerX = -6.5f;
+            upperX = 6.5f;
+        }
+
+        if ((transform.position.x <= lowerX || transform.position.x >= upperX) && (Time.time - _lastFlipTime > 1.5f))
         {
 
             _lastFlipTime = Time.time;
@@ -85,7 +106,8 @@ public class Enemy : MonoBehaviour
             direction *= -1;
 
         }
-        _rb.velocity = direction * speed;
+
+        _rb.velocity = new Vector2(direction.x * speed, _rb.velocity.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

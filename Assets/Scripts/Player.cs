@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
         GetComponent<Move>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
+        GetComponentInChildren<Canvas>().enabled = false;
 
         foreach (SpriteRenderer renderer in GetComponentsInChildren<SpriteRenderer>())
         {

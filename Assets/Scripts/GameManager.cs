@@ -5,8 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public int enemyCount;
     
     [SerializeField] private GameObject _restartButton;
+
+    private void Update()
+    {
+        if (enemyCount <= 0)
+        {
+            StartCoroutine(GameOver());
+        }
+    }
 
     private void Awake()
     {
