@@ -8,6 +8,8 @@ TagManager:
   - Platform
   - Enemy
   - GroundCheck
+  - Undefined
+  - Bullet
   layers:
   - Default
   - TransparentFX

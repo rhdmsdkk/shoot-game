@@ -23,6 +23,11 @@ public class Player : MonoBehaviour
         {
             gun.Shoot();
         }
+
+        if (transform.position.y < -4.5)
+        {
+            Die();
+        }
     }
 
     public void TakeDamage(int damage)

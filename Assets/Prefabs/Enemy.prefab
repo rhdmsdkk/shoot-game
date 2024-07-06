@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7285057610216845682}
   bullet: {fileID: 5597306130314860207, guid: a7e4f5f0dbc80ba4e954e668a8d19693, type: 3}
-  fireRate: 0.5
+  fireRate: 1
 --- !u!1 &1115440442402731415
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +576,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -32.25, y: 0.8}
+  m_Offset: {x: -32.25, y: 1.88}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -587,7 +587,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 63.2, y: 1}
+  m_Size: {x: 63.2, y: 5.06}
   m_EdgeRadius: 0
 --- !u!1 &7980426406779127752
 GameObject:
@@ -752,7 +752,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!114 &2796682465303403303
 MonoBehaviour:
   m_ObjectHideFlags: 0

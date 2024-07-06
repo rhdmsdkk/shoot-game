@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody2D _rb;
     private bool _playerDetected;
+    private bool _bulletDetected;
+    private bool _isJumping;
     private float _lastFlipTime = 0f;
     private int _health;
 
@@ -26,7 +28,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (_playerDetected)
+        if (_playerDetected && !_isJumping)
         {
             gun.Shoot();
         } 
@@ -34,6 +36,28 @@ public class Enemy : MonoBehaviour
         {
             Patrol();
         }
+
+        if (_bulletDetected)
+        {
+            float choose = Random.Range(0f, 1f);
+            if (choose < 0.2f)
+            {
+                _isJumping = true;
+                Jump();
+            }
+            _bulletDetected = false;
+        }
+
+        if (transform.position.y < -4.5)
+        {
+            Die();
+        }
+    }
+
+    void Jump()
+    {
+        _rb.velocity = new Vector2(_rb.velocity.x, 10);
+        _isJumping = false;
     }
 
     public void TakeDamage(int damage)
@@ -115,6 +139,11 @@ public class Enemy : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             _playerDetected = true;
+        }
+
+        if (collision.CompareTag("Bullet"))
+        {
+            _bulletDetected = true;
         }
     }
 
